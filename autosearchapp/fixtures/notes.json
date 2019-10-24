@@ -1,0 +1,10 @@
+[
+    {
+        "model": "autosearchapp.note",
+        "pk": 1,
+        "fields": {
+            "vehicle_notes": "This dude said he would give me a sick deal and bring the price down like.. a lot",
+            "vehicle_id": 1
+        }
+    }
+]
