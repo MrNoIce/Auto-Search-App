@@ -12,34 +12,42 @@ def vehicle_list(request):
 
             db_cursor.execute("""
             select
-                b.id,
-                b.title,
-                b.isbn,
-                b.author,
-                b.year_published,
-                b.librarian_id,
-                b.location_id
-            from libraryapp_book b
+                v.id,
+                v.make,
+                v.model,
+                v.year,
+                v.mileage,
+                v.color,
+                v.vin,
+                v.zip_code,
+                v.url,
+                v.price,
+                n.vehicle_notes
+            from autosearchapp_vehicle v
+            JOIN autosearchapp_note n WHERE vehicle_id = v.id;
             """)
 
-            all_books = []
+            all_vehicles = []
             dataset = db_cursor.fetchall()
 
             for row in dataset:
-                book = Book()
-                book.id = row['id']
-                book.title = row['title']
-                book.isbn = row['isbn']
-                book.author = row['author']
-                book.year_published = row['year_published']
-                book.librarian_id = row['librarian_id']
-                book.location_id = row['location_id']
+                vehicle = Vehicle()
+                vehicle.id = row['id']
+                vehicle.make = row['make']
+                vehicle.model = row['model']
+                vehicle.year = row['year']
+                vehicle.mileage = row['mileage']
+                vehicle.color = row['color']
+                vehicle.vin = row['vin']
+                vehicle.zip_code = row['zip_code']
+                vehicle.url = row['url']
+                vehicle.price = row['price']
 
-                all_books.append(book)
+                all_vehicles.append(vehicle)
 
         template = 'vehicles/list.html'
         context = {
-            'all_books': all_books
+            'all_vehicles': all_vehicles
         }
 
         return render(request, template, context)
