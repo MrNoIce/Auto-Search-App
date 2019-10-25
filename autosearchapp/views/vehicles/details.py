@@ -99,5 +99,10 @@ def create_vehicle(cursor, row):
     vehicle.url = _row["url"]
     vehicle.price = _row["price"]
 
+    note = Note()
+    note.vehicle_notes = _row["vehicle_notes"]
+
+    vehicle.note = note
+
 
     return vehicle
