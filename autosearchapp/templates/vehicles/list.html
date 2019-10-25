@@ -7,12 +7,15 @@
   </head>
   <body>
     <h1>Vehicles</h1>
-        {% comment %} <a href="{% url 'autosearchapp:vehicle_form' %}">Edit vehicle notes</a> {% endcomment %}
+
     <ol>
     {% for vehicle in all_vehicles %}
         <li>
              {{ vehicle.model }}
             by {{vehicle.make}} created in {{vehicle.year}}
+           <div> What they said - {{vehicle.notes}} </div>
+            <div><button>Add</button> <button>Edit</button></div>
+            <a href="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}">Edit vehicle notes</a>
         </li>
     {% endfor %}
     </ol>

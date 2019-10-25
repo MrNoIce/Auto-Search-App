@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vehicle</title>
+</head>
+
+<body>
+
+    <section id="vehicle-details">
+        <h1>{{ vehicle.make }}</h1>
+        <h2>{{ vehicle.model }}</h2>
+
+        <div>Year {{ vehicle.year }}</div>
+        <div>Mileage: {{ vehicle.mileage }}</div>
+        <div>Color {{ vehicle.color }}</div>
+        <div>Vin Number {{ vehicle.vin }}</div>
+        <div>Zip code {{ vehicle.zip_code }}</div>
+        <div>Listing {{ vehicle.url }}</div>
+        <div>Price {{ vehicle.price }}</div>
+        <div>Notes {{ vehicle.notes }}</div>
+    </section>
+
+    <section id="vehicle-actions" style="display:flex;">
+        <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button>Delete</button>
+        </form>
+
+        <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
+            {% csrf_token %}
+            <button>Edit</button>
+        </form>
+    </section>
+
+</body>
+
+</html>

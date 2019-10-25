@@ -42,6 +42,7 @@ def vehicle_list(request):
                 vehicle.zip_code = row['zip_code']
                 vehicle.url = row['url']
                 vehicle.price = row['price']
+                vehicle.notes = row['vehicle_notes']
 
                 all_vehicles.append(vehicle)
 

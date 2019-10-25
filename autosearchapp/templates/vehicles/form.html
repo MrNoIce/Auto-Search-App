@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Autosearch</title>
+  </head>
+  <body>
+    <h1>Edit Notes</h1>
+
+
+    <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
+      {% csrf_token %}
+      <fieldset>
+          <label for="note">Notes: </label>
+          <input id="note" type="text" name="note">
+      </fieldset>
+
+      <input type="submit" value="Add It" />
+    </form>
+  </body>
+</html>
