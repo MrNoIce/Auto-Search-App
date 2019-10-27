@@ -9,7 +9,7 @@ app_name = "autosearchapp"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', vehicle_list, name='home'),
+    url(r'^$', home, name='home'),
     url(r'^vehicles$', vehicle_list, name='vehicles'),
     path('vehicle/<int:vehicle_id>/', vehicle_details, name='vehicle'),
     url(r'^vehicle/form$', vehicle_form, name='vehicle_form'),

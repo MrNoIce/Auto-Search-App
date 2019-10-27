@@ -1,4 +1,4 @@
-{% extends 'shared/base.html' %}
+{% extends 'shared/nav.html' %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -8,10 +8,8 @@
     <title>Autosearch</title>
   </head>
   <body>
-    <h1>Edit Notes</h1>
+    <h1>Search</h1>
 
-
-    <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
       {% comment %} {% csrf_token %} {% endcomment %}
       <fieldset>
           <label for="note">Notes: </label>
@@ -19,6 +17,7 @@
       </fieldset>
 
       <input type="submit" value="Add It" />
+      <button>Search</button>
     </form>
   </body>
 </html>
