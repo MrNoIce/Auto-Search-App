@@ -1,4 +1,7 @@
-{% load staticfiles %}
+{% extends 'shared/nav.html' %}
+
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 
@@ -25,13 +28,13 @@
 
     <section id="vehicle-actions" style="display:flex;">
         <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
-            {% csrf_token %}
+            {% comment %} {% csrf_token %} {% endcomment %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button>Delete</button>
         </form>
 
         <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
-            {% csrf_token %}
+            {% comment %} {% csrf_token %} {% endcomment %}
             <button>Edit</button>
         </form>
     </section>
@@ -39,3 +42,4 @@
 </body>
 
 </html>
+{% endblock %}

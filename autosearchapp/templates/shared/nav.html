@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Library</title>
+
+    <style>
+        .navList {
+            list-style-type: none;
+            display: flex;
+            border: 1px solid lightgray;
+            padding: 1em;
+        }
+
+        .navList__route {
+            margin: 0 0.5em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="site-nav">
+        <ol class="navList">
+            <li class="navList__route"><a href="{% url 'autosearchapp:vehicles' %}">Vehicles</a></li>
+            {% comment %} <li class="navList__route"><a href="{% url 'autosearchapp:books' %}">Books</a></li> {% endcomment %}
+            {% comment %} <li class="navList__route"><a href="{% url 'autosearchapp:librarians' %}">Librarians</a></li> {% endcomment %}
+        </ol>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
