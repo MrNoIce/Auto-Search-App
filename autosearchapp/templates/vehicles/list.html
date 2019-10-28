@@ -1,4 +1,5 @@
 {% extends 'shared/nav.html' %}
+{% load staticfiles %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -10,9 +11,14 @@
   <body>
     <h1>Vehicles</h1>
 
-    <ol>
+    <ol class="vehicles">
     {% for vehicle in all_vehicles %}
         <li>
+        <dialog class="infoDialog">
+        <div class="infoDialog__message"></div>
+        <button class="closeDialog">Close</button>
+         </dialog>
+
              {{ vehicle.model }}
             by {{vehicle.make}} created in {{vehicle.year}}
            <div> What they said - {{vehicle.notes}} </div>
@@ -21,9 +27,13 @@
             <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
             {% comment %} {% csrf_token %} {% endcomment %}
             <button>Details</button>
-        </form>  </div>      </li>
+        </form>
+        <button id="detail--{{ vehicle.id }}">Modal</button> </div>      </li>
     {% endfor %}
     </ol>
   </body>
 </html>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'scripts/vehiclesearch.js' %}"></script>
 {% endblock %}
