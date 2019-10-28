@@ -6,5 +6,13 @@
             "vehicle_notes": "This dude said he would give me a sick deal and bring the price down like.. a lot",
             "vehicle_id": 1
         }
+    },
+    {
+        "model": "autosearchapp.note",
+        "pk": 2,
+        "fields": {
+            "vehicle_notes": "I was hoping for a cleaner interior but the bass slapps in this slab",
+            "vehicle_id": 2
+        }
     }
 ]

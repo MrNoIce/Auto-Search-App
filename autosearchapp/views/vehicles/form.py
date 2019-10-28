@@ -24,7 +24,7 @@ def vehicle_edit_form(request, vehicle_id):
     if request.method == 'GET':
         vehicle = get_vehicle(vehicle_id)
 
-        template = 'vehicles/detail.html'
+        template = 'vehicles/form.html'
         context = {
             'vehicle': vehicle,
         }

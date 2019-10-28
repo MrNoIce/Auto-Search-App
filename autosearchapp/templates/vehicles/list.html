@@ -16,9 +16,12 @@
              {{ vehicle.model }}
             by {{vehicle.make}} created in {{vehicle.year}}
            <div> What they said - {{vehicle.notes}} </div>
-            <div><button>Add</button> <button>Edit</button></div>
-            <a href="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}">Details</a>
-        </li>
+            <div><button>Add</button>
+
+            <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <button>Details</button>
+        </form>  </div>      </li>
     {% endfor %}
     </ol>
   </body>

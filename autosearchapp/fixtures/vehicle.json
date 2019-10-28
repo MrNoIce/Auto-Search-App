@@ -14,5 +14,22 @@
             "price": 19207,
             "user_id": 1
         }
+    },
+    {
+        "model": "autosearchapp.vehicle",
+        "pk": 2,
+        "fields":{
+            "make": "BMW",
+            "model": "M3",
+            "year": 2009,
+            "mileage": 199928,
+            "color": "Silver",
+            "vin": "H2J3U987RFGHWIRUYGBIU",
+            "zip_code": 37277,
+            "url": "https://www.cars.com/shopping/?aff=acqsem20&KNC=acqsem20&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxA2zo2OaMCo1Ok3jDG6FeTGZNRXz9B0slsdSfdUyotGdFvgOT6TRVcaAnc-EALw_wcB&gclsrc=aw.ds",
+            "price": 199907,
+            "user_id": 1
+        }
     }
 ]
+

@@ -1,4 +1,4 @@
-{% extends 'shared/base.html' %}
+{% extends 'shared/nav.html' %}
 
 {% block content %}
 <!DOCTYPE html>
@@ -12,10 +12,11 @@
 
 
     <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
-      {% comment %} {% csrf_token %} {% endcomment %}
+      {% csrf_token %}
       <fieldset>
+      <div> {{vehicle.model}} </div>
           <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="vehicle" value="{{ vehicle.note.vehicle_note }}">
+          <input id="vehicle" type="text" name="vehicle" value="{{ vehicle.note.vehicle_notes }}">
       </fieldset>
 
       <input type="submit" value="Add It" />

@@ -18,6 +18,11 @@
 
       <input type="submit" value="Add It" />
       <button>Search</button>
+
+              <form action="{% url 'autosearchapp:search' %}" method="GET">
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <button>Edit</button>
+        </form>
     </form>
   </body>
 </html>
