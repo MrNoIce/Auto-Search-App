@@ -11,9 +11,9 @@ def search(request):
     headers = {}
     r = requests.get('http://localhost:5002/listings', params=request.GET)
     json = r.json()
-    if r.status_code == 200:
-        return HttpResponse('Yay, it worked')
-    return JsonResponse(json)
+    # if r.status_code == 200:
+    #     return HttpResponse('Yay, it worked')
+    return HttpResponse(json, content_type='application/json')
 
 
 def index(request):
