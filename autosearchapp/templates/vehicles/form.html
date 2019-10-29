@@ -2,6 +2,55 @@
 {% load staticfiles %}
 
 {% block content %}
+
+    <h1>Edit Notes</h1>
+
+    {% if vehicle.id is not None %}
+        <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
+    {% else %}
+        <form action="{% url 'autosearchapp:vehicles' %}" method="post">
+    {% endif %}
+        {% csrf_token %}
+        {% comment %} <fieldset>
+            <label for="title">Title: </label>
+            <input id="title" type="text" name="title" value="{{ vehicle.title }}">
+        </fieldset>
+        <fieldset>
+            <label for="author">Author: </label>
+            <input id="author" type="text" name="author" value="{{ vehicle.author }}">
+        </fieldset>
+        <fieldset>
+            <label for="year_published">Year of publication: </label>
+            <input id="year_published" type="number" name="year_published" value="{{ vehicle.year_published }}">
+        </fieldset> {% endcomment %}
+
+
+       <fieldset>
+      <div> {{vehicle.model}} </div>
+          <label for="note">Notes: </label>
+          <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
+      </fieldset>
+
+        {% if vehicle.id is not None %}
+            <input type="hidden" name="actual_method" value="PUT">
+            <input type="submit" value="Update" />
+        {% else %}
+            <input type="submit" value="Create" />
+        {% endif %}
+
+    </form>
+{% endblock %}
+
+
+
+
+
+
+
+{% comment %} {% extends 'shared/nav.html' %}
+{% load staticfiles %}
+
+{% block content %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,11 +66,11 @@
       <fieldset>
       <div> {{vehicle.model}} </div>
           <label for="note">Notes: </label>
-          <input id="vehicle" type="submit" name="actual_method" value="{{ vehicle.note.vehicle_notes }}">
+          <input id="vehicle" type="text" name="actual_method" value="{{ vehicle.note.vehicle_notes }}">
       </fieldset>
 
       <button> Submit </button>
     </form>
   </body>
 </html>
-{% endblock %}
+{% endblock %} {% endcomment %}

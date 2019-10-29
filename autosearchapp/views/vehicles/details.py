@@ -52,20 +52,12 @@ def vehicle_details(request, vehicle_id):
                 db_cursor = conn.cursor()
 
                 db_cursor.execute("""
-                UPDATE autosearchapp_vehicle
-                SET make = ?,
-                    model = ?,
-                    year = ?,
-                    mileage = ?,
-                    color = ?
-                WHERE id = ?
+                UPDATE autosearchapp_note
+                SET vehicle_notes = ?
+                WHERE vehicle_id = ?
                 """,
                 (
-                    form_data['make'], form_data['model'],
-                    form_data['year'], form_data['mileage'],
-                    form_data["color"],form_data["vin"],
-                    form_data["zip_code"],form_data["url"],
-                    form_data["price"], vehicle_id,
+                    form_data['vehicle_notes'], vehicle_id,
                 ))
 
             return redirect(reverse('autosearchapp:vehicles'))
