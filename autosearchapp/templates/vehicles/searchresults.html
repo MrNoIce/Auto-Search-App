@@ -12,19 +12,20 @@
     <h1>Vehicles</h1>
 
     <ol class="vehicles">
-    {% for vehicle in saved_vehicles %}
+    {% for vehicle in searched_vehicles %}
         <li>
         <dialog class="infoDialog">
         <div class="infoDialog__message"></div>
         <button class="closeDialog">Close</button>
          </dialog>
 
-             {{ vehicle.model }}
-            by {{vehicle.make}} created in {{vehicle.year}}
-           <div> What they said - {{vehicle.notes}} </div>
+             {{ vehicle.heading }}
+            Vin: {{vehicle.vin}} Price: {{vehicle.price}}
+           <div> Mileage - {{vehicle.miles}} </div>
+           <div><a href='{{vehicle.vdp_url}}'>Seller</a></div>
             <div><button>Add</button>
 
-            <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
+            {% comment %} <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET"> {% endcomment %}
             {% comment %} {% csrf_token %} {% endcomment %}
             <button>Details</button>
         </form>

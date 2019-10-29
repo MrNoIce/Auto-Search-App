@@ -12,15 +12,15 @@
     <h1>Edit Notes</h1>
 
 
-    <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
+    <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="PUT">
       {% csrf_token %}
       <fieldset>
       <div> {{vehicle.model}} </div>
           <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="vehicle" value="{{ vehicle.note.vehicle_notes }}">
+          <input id="vehicle" type="submit" name="actual_method" value="{{ vehicle.note.vehicle_notes }}">
       </fieldset>
 
-      <input type="submit" value="Add It" />
+      <button> Submit </button>
     </form>
   </body>
 </html>

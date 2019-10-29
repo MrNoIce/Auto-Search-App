@@ -27,7 +27,7 @@ def vehicle_list(request):
             JOIN autosearchapp_note n WHERE vehicle_id = v.id;
             """)
 
-            all_vehicles = []
+            saved_vehicles = []
             dataset = db_cursor.fetchall()
 
             for row in dataset:
@@ -44,11 +44,11 @@ def vehicle_list(request):
                 vehicle.price = row['price']
                 vehicle.notes = row['vehicle_notes']
 
-                all_vehicles.append(vehicle)
+                saved_vehicles.append(vehicle)
 
         template = 'vehicles/list.html'
         context = {
-            'all_vehicles': all_vehicles
+            'saved_vehicles': saved_vehicles
         }
 
         return render(request, template, context)

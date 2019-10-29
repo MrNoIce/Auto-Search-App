@@ -8,12 +8,13 @@ import requests
 
 
 def search(request):
-    headers = {}
     r = requests.get('http://localhost:5002/listings', params=request.GET)
-    json = r.json()
-    # if r.status_code == 200:
-    #     return HttpResponse('Yay, it worked')
-    return HttpResponse(json, content_type='application/json')
+    searched_vehicles = r.json()
+    template = 'vehicles/searchresults.html'
+    context = {
+        'searched_vehicles': searched_vehicles
+    }
+    return render(request, template, context)
 
 
 def index(request):
@@ -24,7 +25,7 @@ def index(request):
     }
 
 
-
+# , HttpResponse(searched_vehicles, content_type='application/json')
 
 # def search(request):
 

@@ -14,7 +14,7 @@
       {% comment %} {% csrf_token %} {% endcomment %}
       <fieldset>
           <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="vehicle" value="{{ vehicle.note.vehicle_note }}">
+          <input id="vehiclesearch" type="text" name="vehiclesearch" value="">
       </fieldset>
 
       <input type="submit" value="Add It" />
@@ -22,7 +22,7 @@
 
               <form action="{% url 'autosearchapp:search' %}" method="GET">
             {% comment %} {% csrf_token %} {% endcomment %}
-            <button>Edit</button>
+            <button>Actual Search</button>
         </form>
     </form>
   </body>
