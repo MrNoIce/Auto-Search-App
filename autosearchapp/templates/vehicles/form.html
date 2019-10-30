@@ -11,19 +11,6 @@
         <form action="{% url 'autosearchapp:vehicles' %}" method="post">
     {% endif %}
         {% csrf_token %}
-        {% comment %} <fieldset>
-            <label for="title">Title: </label>
-            <input id="title" type="text" name="title" value="{{ vehicle.title }}">
-        </fieldset>
-        <fieldset>
-            <label for="author">Author: </label>
-            <input id="author" type="text" name="author" value="{{ vehicle.author }}">
-        </fieldset>
-        <fieldset>
-            <label for="year_published">Year of publication: </label>
-            <input id="year_published" type="number" name="year_published" value="{{ vehicle.year_published }}">
-        </fieldset> {% endcomment %}
-
 
        <fieldset>
       <div> {{vehicle.model}} </div>
@@ -45,32 +32,3 @@
 
 
 
-
-
-{% comment %} {% extends 'shared/nav.html' %}
-{% load staticfiles %}
-
-{% block content %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Autosearch</title>
-  </head>
-  <body>
-    <h1>Edit Notes</h1>
-
-
-    <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="PUT">
-      {% csrf_token %}
-      <fieldset>
-      <div> {{vehicle.model}} </div>
-          <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="actual_method" value="{{ vehicle.note.vehicle_notes }}">
-      </fieldset>
-
-      <button> Submit </button>
-    </form>
-  </body>
-</html>
-{% endblock %} {% endcomment %}

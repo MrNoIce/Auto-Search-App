@@ -17,7 +17,9 @@
     {% endif %}
 
     <ol class="vehicles">
-    {% for vehicle in searched_vehicles %}
+    {% comment %} {% if searched_vehicles.text == "listings" %} {% endcomment %}
+    {% for vehicle in searched_vehicles.listings %}
+
         <li>
         <dialog class="infoDialog">
         <div class="infoDialog__message"></div>
@@ -35,11 +37,12 @@
             <div><button>Add</button>
 
             {% comment %} <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET"> {% endcomment %}
-            {% csrf_token %}
+            {% comment %} {% csrf_token %} {% endcomment %}
             <button>Details</button>
         </form>
         <button id='detail--{{ vehicle.id }}'>Modal</button> </div>      </li>
     {% endfor %}
+    {% comment %} {% endif %} {% endcomment %}
 
     </ol>
   </body>
@@ -48,3 +51,5 @@
 {% block scripts %}
     <script src="{% static 'scripts/vehiclesearch.js' %}"></script>
 {% endblock %}
+
+
