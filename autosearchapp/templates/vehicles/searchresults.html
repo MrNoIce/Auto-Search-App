@@ -10,6 +10,11 @@
   </head>
   <body>
     <h1>Vehicles</h1>
+    {% if vehicle.value is not None %}
+        <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
+    {% else %}
+        <form action="{% url 'autosearchapp:vehicles' %}" method="post">
+    {% endif %}
 
     <ol class="vehicles">
     {% for vehicle in searched_vehicles %}
@@ -18,19 +23,24 @@
         <div class="infoDialog__message"></div>
         <button class="closeDialog">Close</button>
          </dialog>
+             {% if vehicle.media.photo_links|length > 0 %}
+            <img src='{{vehicle.media.photo_links.0}}'height="90rem" width="90rem">
+
+            {% endif %}
 
              {{ vehicle.heading }}
             Vin: {{vehicle.vin}} Price: {{vehicle.price}}
            <div> Mileage - {{vehicle.miles}} </div>
-           <div><a href='{{vehicle.vdp_url}}'>Seller</a></div>
+           <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
             <div><button>Add</button>
 
             {% comment %} <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET"> {% endcomment %}
-            {% comment %} {% csrf_token %} {% endcomment %}
+            {% csrf_token %}
             <button>Details</button>
         </form>
-        <button id="detail--{{ vehicle.id }}">Modal</button> </div>      </li>
+        <button id='detail--{{ vehicle.id }}'>Modal</button> </div>      </li>
     {% endfor %}
+
     </ol>
   </body>
 </html>

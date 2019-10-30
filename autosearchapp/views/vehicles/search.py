@@ -24,7 +24,13 @@ def index(request):
         'roles' : ['Admin','User']
     }
 
-
+# r = requests.get('http://localhost:5002/listings', params=request.GET)
+#     if media.photo_links in r != null:
+#         searched_vehicles = r.json()
+#         template = 'vehicles/searchresults.html'
+#         context = {
+#             'searched_vehicles': searched_vehicles
+#         }
 # , HttpResponse(searched_vehicles, content_type='application/json')
 
 # def search(request):
