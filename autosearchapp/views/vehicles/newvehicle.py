@@ -8,7 +8,7 @@ from autosearchapp.models import model_factory
 from ..connection import Connection
 
 
-def get_vehicle(vehicle_id):
+def new_vehicle1(request):
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = create_vehicle
         db_cursor = conn.cursor()
@@ -26,10 +26,30 @@ def get_vehicle(vehicle_id):
             n.vehicle_notes
         from autosearchapp_vehicle v
         JOIN autosearchapp_note n ON vehicle_id = v.id
-        WHERE v.id = ?
-        """, (vehicle_id,))
+        """)
 
-        return db_cursor.fetchone()
+    return redirect(reverse('autosearchapp:vehicles'))
+
+
+def new_vehicle(request):
+
+    form_data = request.POST
+
+    with sqlite3.connect(Connection.db_path) as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        INSERT INTO autosearchapp_vehicle
+        (
+            heading, price
+        )
+        VALUES (?, ?)
+        """,
+        (
+            form_data['heading'], form_data['price'],
+        ))
+
+    return redirect(reverse('autosearchapp:vehicles'))
 
 # @login_required
 def vehicle_details(request, vehicle_id):
@@ -51,11 +71,15 @@ def vehicle_details(request, vehicle_id):
 
                 db_cursor.execute("""
                 UPDATE autosearchapp_note
-                SET vehicle_notes = ?
+                SET heading = ?,
+                    vdp_url = ?,
+                    price = ?,
+                    vehicle_notes = ?,
                 WHERE vehicle_id = ?
                 """,
                 (
-                    form_data['vehicle_notes'], vehicle_id,
+                    form_data['heading'], form_data['vdp_url'],
+                    form_data['price'], form_data['vehicle_notes'], vehicle_id,
                 ))
 
             return redirect(reverse('autosearchapp:vehicles'))
@@ -81,6 +105,7 @@ def create_vehicle(cursor, row):
     vehicle = Vehicle()
     vehicle.id = _row["vehicle_id"]
     vehicle.heading = _row["heading"]
+    vehicle.miles = _row["mileage"]
     vehicle.color = _row["color"]
     vehicle.vin = _row["vin"]
     vehicle.zip_code = _row["zip_code"]

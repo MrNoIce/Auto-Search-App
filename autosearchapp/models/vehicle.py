@@ -3,16 +3,14 @@ from django.contrib.auth.models import User
 
 class Vehicle(models.Model):
 
-    make = models.CharField(max_length=50)
-    model = models.CharField(max_length=50)
-    year = models.IntegerField(max_length=4)
-    mileage = models.IntegerField(max_length=6)
-    color = models.CharField(max_length=50)
-    vin = models.CharField(max_length=50)
-    zip_code = models.IntegerField(max_length=7)
-    url = models.URLField(max_length=200)
-    price = models.IntegerField(max_length=50)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    heading = models.CharField(max_length=50, null=True, blank=True)
+    mileage = models.IntegerField(max_length=6, null=True, blank=True)
+    color = models.CharField(max_length=50, null=True, blank=True)
+    vin = models.CharField(max_length=50, null=True, blank=True)
+    zip_code = models.IntegerField(max_length=7, null=True, blank=True)
+    vdp_url = models.URLField(max_length=200, null=True, blank=True)
+    price = models.IntegerField(max_length=50, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = ("vehicle")

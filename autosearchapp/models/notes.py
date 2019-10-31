@@ -3,8 +3,8 @@ from .vehicle import Vehicle
 
 class Note(models.Model):
 
-    vehicle_notes = models.CharField(max_length=200)
-    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE)
+    vehicle_notes = models.CharField(max_length=200, blank=True)
+    vehicle = models.ForeignKey(Vehicle, on_delete=models.CASCADE, null=True, blank=True)
 
     class Meta:
         verbose_name = ("note")

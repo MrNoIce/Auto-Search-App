@@ -13,14 +13,12 @@ def vehicle_list(request):
             db_cursor.execute("""
             select
                 v.id,
-                v.make,
-                v.model,
-                v.year,
+                v.heading,
                 v.mileage,
                 v.color,
                 v.vin,
                 v.zip_code,
-                v.url,
+                v.vdp_url,
                 v.price,
                 n.vehicle_notes
             from autosearchapp_vehicle v
@@ -33,14 +31,12 @@ def vehicle_list(request):
             for row in dataset:
                 vehicle = Vehicle()
                 vehicle.id = row['id']
-                vehicle.make = row['make']
-                vehicle.model = row['model']
-                vehicle.year = row['year']
+                vehicle.heading = row['heading']
                 vehicle.mileage = row['mileage']
                 vehicle.color = row['color']
                 vehicle.vin = row['vin']
                 vehicle.zip_code = row['zip_code']
-                vehicle.url = row['url']
+                vehicle.vdp_url = row['vdp_url']
                 vehicle.price = row['price']
                 vehicle.notes = row['vehicle_notes']
 

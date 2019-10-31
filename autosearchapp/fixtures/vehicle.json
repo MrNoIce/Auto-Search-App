@@ -3,14 +3,12 @@
         "model": "autosearchapp.vehicle",
         "pk": 1,
         "fields": {
-            "make": "Honda",
-            "model": "Accord",
-            "year": 2019,
+            "heading": "2011 Mercedes bernz",
             "mileage": 10928,
             "color": "black",
             "vin": "S18JDHU389JKJBH3829",
             "zip_code": 37207,
-            "url": "https://www.cars.com/shopping/?aff=acqsem20&KNC=acqsem20&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxA2zo2OaMCo1Ok3jDG6FeTGZNRXz9B0slsdSfdUyotGdFvgOT6TRVcaAnc-EALw_wcB&gclsrc=aw.ds",
+            "vdp_url": "https://www.cars.com/shopping/?aff=acqsem20&KNC=acqsem20&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxA2zo2OaMCo1Ok3jDG6FeTGZNRXz9B0slsdSfdUyotGdFvgOT6TRVcaAnc-EALw_wcB&gclsrc=aw.ds",
             "price": 19207,
             "user_id": 1
         }
@@ -19,14 +17,12 @@
         "model": "autosearchapp.vehicle",
         "pk": 2,
         "fields":{
-            "make": "BMW",
-            "model": "M3",
-            "year": 2009,
+            "heading": "1493 Jaguar Glider",
             "mileage": 199928,
             "color": "Silver",
             "vin": "H2J3U987RFGHWIRUYGBIU",
             "zip_code": 37277,
-            "url": "https://www.cars.com/shopping/?aff=acqsem20&KNC=acqsem20&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxA2zo2OaMCo1Ok3jDG6FeTGZNRXz9B0slsdSfdUyotGdFvgOT6TRVcaAnc-EALw_wcB&gclsrc=aw.ds",
+            "vdp_url": "https://www.cars.com/shopping/?aff=acqsem20&KNC=acqsem20&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxA2zo2OaMCo1Ok3jDG6FeTGZNRXz9B0slsdSfdUyotGdFvgOT6TRVcaAnc-EALw_wcB&gclsrc=aw.ds",
             "price": 199907,
             "user_id": 1
         }
