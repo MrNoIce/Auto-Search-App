@@ -6,7 +6,7 @@
     <h1>Edit Notes</h1>
 
     {% if vehicle.id is not None %}
-        <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="post">
+        <form action="{% url 'autosearchapp:new_note' vehicle.id %}" method="post">
     {% else %}
         <form action="{% url 'autosearchapp:vehicles' %}" method="post">
     {% endif %}
@@ -17,6 +17,8 @@
           <label for="note">Notes: </label>
           <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
       </fieldset>
+      
+        <button>Add Note</button>
 
         {% if vehicle.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">

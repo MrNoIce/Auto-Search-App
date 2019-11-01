@@ -28,13 +28,14 @@
 
     <section id="vehicle-actions" style="display:flex;">
         <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
-            {% comment %} {% csrf_token %} {% endcomment %}
+            {% csrf_token %}
             <input type="hidden" name="actual_method" value="DELETE">
             <button>Delete</button>
         </form>
+        
 
         <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
-            {% comment %} {% csrf_token %} {% endcomment %}
+            {% csrf_token %}
             <button>Edit</button>
         </form>
     </section>

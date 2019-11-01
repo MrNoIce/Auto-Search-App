@@ -10,17 +10,25 @@
   </head>
   <body>
     <h1>Search</h1>
+              <form action="{% url 'autosearchapp:search' %}" method="GET">
 
       {% comment %} {% csrf_token %} {% endcomment %}
       <fieldset>
-          <label for="note"></label>
-          <input id="vehiclesearch" type="text" name="vehiclesearch" value="">
+          <label for="year"></label>
+          <input id="year" type="text" name="year" value="{{year}}">
+      </fieldset>
+      <fieldset>
+          <label for="make"></label>
+          <input id="make" type="text" name="make" value="{{make}}">
+      </fieldset>
+      <fieldset>
+          <label for="model"></label>
+          <input id="model" type="text" name="model" value="{{model}}">
       </fieldset>
 
       <input type="submit" value="Add It" />
       <button>Search</button>
 
-              <form action="{% url 'autosearchapp:search' %}" method="GET">
             {% comment %} {% csrf_token %} {% endcomment %}
             <button>Actual Search</button>
         </form>

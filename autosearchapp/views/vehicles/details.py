@@ -25,7 +25,7 @@ def get_vehicle(vehicle_id):
             v.price,
             n.vehicle_notes
         from autosearchapp_vehicle v
-        JOIN autosearchapp_note n ON vehicle_id = v.id
+        LEFT JOIN autosearchapp_note n ON vehicle_id = v.id
         WHERE v.id = ?
         """, (vehicle_id,))
 

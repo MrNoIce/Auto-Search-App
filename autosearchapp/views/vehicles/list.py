@@ -22,7 +22,8 @@ def vehicle_list(request):
                 v.price,
                 n.vehicle_notes
             from autosearchapp_vehicle v
-            JOIN autosearchapp_note n WHERE vehicle_id = v.id;
+            LEFT JOIN autosearchapp_note n on vehicle_id = v.id;
+
             """)
 
             saved_vehicles = []
