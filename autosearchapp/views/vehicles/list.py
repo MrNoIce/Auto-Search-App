@@ -1,9 +1,10 @@
 import sqlite3
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from autosearchapp.models import Vehicle
 from ..connection import Connection
 
-
+@login_required
 def vehicle_list(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:

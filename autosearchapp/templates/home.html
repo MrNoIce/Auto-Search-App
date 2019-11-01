@@ -12,7 +12,7 @@
     <h1>Search</h1>
               <form action="{% url 'autosearchapp:search' %}" method="GET">
 
-      {% comment %} {% csrf_token %} {% endcomment %}
+      {% csrf_token %}
       <fieldset>
           <label for="year"></label>
           <input id="year" type="text" name="year" value="{{year}}">
@@ -29,7 +29,7 @@
       <input type="submit" value="Add It" />
       <button>Search</button>
 
-            {% comment %} {% csrf_token %} {% endcomment %}
+            {% csrf_token %}
             <button>Actual Search</button>
         </form>
     </form>
