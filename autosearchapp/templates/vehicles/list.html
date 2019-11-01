@@ -19,8 +19,8 @@
         <button class="closeDialog">Close</button>
          </dialog>
 
-             {{ vehicle.model }}
-            by {{vehicle.make}} created in {{vehicle.year}}
+            {{ vehicle.heading }}
+            {{ vehicle.price }}
            <div> What they said - {{vehicle.notes}} </div>
             <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
             {% comment %} {% csrf_token %} {% endcomment %}

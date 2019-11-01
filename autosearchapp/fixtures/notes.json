@@ -14,5 +14,13 @@
             "vehicle_notes": "I was hoping for a cleaner interior but the bass slapps in this slab",
             "vehicle_id": 2
         }
+    },
+    {
+        "model": "autosearchapp.note",
+        "pk": 3,
+        "fields": {
+            "vehicle_notes": "I was really hoping for a cleaner interior but the bass slapps in this slab",
+            "vehicle_id": 3
+        }
     }
 ]

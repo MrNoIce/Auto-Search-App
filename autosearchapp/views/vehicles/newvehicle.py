@@ -46,7 +46,7 @@ def new_vehicle(request):
         VALUES (?, ?)
         """,
         (
-            form_data['heading'], form_data['price'],
+            form_data['heading'], form_data['price']
         ))
 
     return redirect(reverse('autosearchapp:vehicles'))
