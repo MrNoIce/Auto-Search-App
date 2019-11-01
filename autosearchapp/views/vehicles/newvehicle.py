@@ -7,23 +7,25 @@ from autosearchapp.models import Vehicle
 from autosearchapp.models import model_factory
 from ..connection import Connection
 
-
+@login_required
 def new_vehicle(request):
 
     form_data = request.POST
 
     with sqlite3.connect(Connection.db_path) as conn:
+        user = request.user
+        user_id = user.id
         db_cursor = conn.cursor()
 
         db_cursor.execute("""
         INSERT INTO autosearchapp_vehicle
         (
-            heading, price
+            heading, price, user_id
         )
-        VALUES (?, ?)
+        VALUES (?, ?, ?)
         """,
         (
-            form_data['heading'], form_data['price']
+            form_data['heading'], form_data['price'], user_id,
         ))
 
     return redirect(reverse('autosearchapp:vehicles'))

@@ -8,6 +8,7 @@ from ..connection import Connection
 def vehicle_list(request):
     if request.method == 'GET':
         with sqlite3.connect(Connection.db_path) as conn:
+            user = request.user
             conn.row_factory = sqlite3.Row
             db_cursor = conn.cursor()
 
@@ -21,11 +22,12 @@ def vehicle_list(request):
                 v.zip_code,
                 v.vdp_url,
                 v.price,
+                v.user_id,
                 n.vehicle_notes
             from autosearchapp_vehicle v
-            LEFT JOIN autosearchapp_note n on vehicle_id = v.id;
-
-            """)
+            LEFT JOIN autosearchapp_note n on vehicle_id = v.id
+            WHERE user_id = ?
+            """,(user.id,))
 
             saved_vehicles = []
             dataset = db_cursor.fetchall()
@@ -40,6 +42,7 @@ def vehicle_list(request):
                 vehicle.zip_code = row['zip_code']
                 vehicle.vdp_url = row['vdp_url']
                 vehicle.price = row['price']
+                vehicle.user_id = row['user_id']
                 vehicle.notes = row['vehicle_notes']
 
                 saved_vehicles.append(vehicle)
