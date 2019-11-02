@@ -25,7 +25,7 @@
             <img src='{{vehicle.media.photo_links.0}}'height="90rem" width="90rem">
             {% endif %}
 
-        <fieldset>
+        {% comment %} <fieldset>
             <label for="heading">Vehicle: </label>
             <input id="heading" type="text" name="heading" value="{{ vehicle.heading }}">
         </fieldset>
@@ -36,9 +36,9 @@
         <fieldset>
           <label for="note">Notes: </label>
           <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
-      </fieldset>
-             {{ vehicle.heading }}
-            Vin: {{vehicle.vin}} Price: {{vehicle.price}}
+      </fieldset> {% endcomment %}
+            <div> {{ vehicle.heading }}</div>
+            Vin: {{vehicle.vin}} Price: {{vehicle.price}} {{vehicle.dealer.city}} {{vehicle.carfax_1_owner}}
            <div> Mileage - {{vehicle.miles}} </div>
            <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
             <div><button type="submit">Add</button>
@@ -46,16 +46,16 @@
 
             {% comment %} <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET"> {% endcomment %}
             {% csrf_token %}
-        <button id='detail--{{ vehicle.id }}'>Modal</button> </div>      </li>
+         </div>      </li>
     </ol>
     {% endfor %}
 
-        {% if vehicle.id is not None %}
+        {% comment %} {% if vehicle.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
             <input type="submit" value="Update" />
         {% else %}
             <input type="submit" value="Create" />
-        {% endif %}
+        {% endif %} {% endcomment %}
   </body>
 </html>
 {% endblock %}

@@ -15,22 +15,30 @@
       {% csrf_token %}
       <fieldset>
           <label for="year"></label>
-          <input id="year" type="text" name="year" value="{{year}}">
+          <input id="year" type="text" name="year" placeholder="Year" value="{{year}}">
       </fieldset>
       <fieldset>
           <label for="make"></label>
-          <input id="make" type="text" name="make" value="{{make}}">
+          <input id="make" type="text" name="make" placeholder="Make" value="{{make}}">
       </fieldset>
       <fieldset>
           <label for="model"></label>
-          <input id="model" type="text" name="model" value="{{model}}">
+          <input id="model" type="text" name="model" placeholder="Model" value="{{model}}">
+      </fieldset>
+      <fieldset>
+          <label for="zip"></label>
+          <input id="zip" type="text" name="zip" placeholder="Zip code" value="{{zip}}">
+      </fieldset>
+      <fieldset>
+          <label for="max_price"></label>
+          <input id="max_price" type="text" name="max_price" placeholder="Max price" value="1000-{{max_price}}">
       </fieldset>
 
-      <input type="submit" value="Add It" />
-      <button>Search</button>
+      <input type="submit" value="Search" />
+      {% comment %} <button>Search</button> {% endcomment %}
 
             {% csrf_token %}
-            <button>Actual Search</button>
+            {% comment %} <button>Actual Search</button> {% endcomment %}
         </form>
     </form>
   </body>

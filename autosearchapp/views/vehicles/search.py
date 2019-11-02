@@ -18,10 +18,12 @@ def search(request):
     year = request.GET['year']
     make = request.GET['make']
     model = request.GET['model']
+    zip_code = request.GET['zip']
+    max_price = request.GET['max_price']
 
     url = "http://api.marketcheck.com/v1/search"
 
-    querystring = {"api_key":API_KEY,"year":year,"make":make,"model":model,"latitude":"36.16","longitude":"-86.78","radius":"50","car_type":"used","start":"0","rows":"50"}
+    querystring = {"api_key":API_KEY,"year":year,"make":make,"model":model,"zip":zip_code,"radius":"200","car_type":"used","start":"0","rows":"50","price_range":max_price,}
 
     headers = {
         'Host': "marketcheck-prod.apigee.net",
