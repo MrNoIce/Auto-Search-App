@@ -25,7 +25,7 @@
             <img src='{{vehicle.media.photo_links.0}}'height="90rem" width="90rem">
             {% endif %}
 
-        {% comment %} <fieldset>
+        <fieldset>
             <label for="heading">Vehicle: </label>
             <input id="heading" type="text" name="heading" value="{{ vehicle.heading }}">
         </fieldset>
@@ -36,10 +36,11 @@
         <fieldset>
           <label for="note">Notes: </label>
           <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
-      </fieldset> {% endcomment %}
+      </fieldset>
             <div> {{ vehicle.heading }}</div>
             Vin: {{vehicle.vin}} Price: {{vehicle.price}} {{vehicle.dealer.city}} {{vehicle.carfax_1_owner}}
            <div> Mileage - {{vehicle.miles}} </div>
+           <div>Transmission type: {{vehicle.build.transmission}}</div>
            <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
             <div><button type="submit">Add</button>
         </form>
@@ -50,12 +51,12 @@
     </ol>
     {% endfor %}
 
-        {% comment %} {% if vehicle.id is not None %}
+       {% if vehicle.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
             <input type="submit" value="Update" />
         {% else %}
             <input type="submit" value="Create" />
-        {% endif %} {% endcomment %}
+        {% endif %}
   </body>
 </html>
 {% endblock %}
