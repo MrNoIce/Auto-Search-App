@@ -34,6 +34,14 @@
             <input id="price" type="text" name="price" value="{{ vehicle.price }}">
         </fieldset>
         <fieldset>
+            <label for="mileage"> </label>
+            <input id="mileage" type="hidden" name="mileage" value="{{ vehicle.miles }}">
+        </fieldset>
+        <fieldset>
+            <label for="vdp_url"> </label>
+            <input id="vdp_url" type="hidden" name="vdp_url" value="{{ vehicle.vdp_url }}">
+        </fieldset>
+        <fieldset>
           <label for="note">Notes: </label>
           <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
       </fieldset>

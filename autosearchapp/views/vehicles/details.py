@@ -31,7 +31,7 @@ def get_vehicle(vehicle_id):
 
         return db_cursor.fetchone()
 
-# @login_required
+@login_required
 def vehicle_details(request, vehicle_id):
     if request.method == 'GET':
         vehicle = get_vehicle(vehicle_id)

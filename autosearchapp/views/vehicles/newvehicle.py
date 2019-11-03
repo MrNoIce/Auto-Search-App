@@ -20,12 +20,13 @@ def new_vehicle(request):
         db_cursor.execute("""
         INSERT INTO autosearchapp_vehicle
         (
-            heading, price, user_id
+            heading, mileage, vdp_url, price, user_id
         )
-        VALUES (?, ?, ?)
+        VALUES (?, ?, ?, ?, ?)
         """,
         (
-            form_data['heading'], form_data['price'], user_id,
+            form_data['heading'], form_data['mileage'],
+            form_data['vdp_url'], form_data['price'], user_id,
         ))
 
     return redirect(reverse('autosearchapp:vehicles'))

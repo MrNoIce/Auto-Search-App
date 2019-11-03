@@ -21,14 +21,22 @@
 
             {{ vehicle.heading }}
             {{ vehicle.price }}
-           <div> What they said - {{vehicle.notes}} </div>
-            <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
+            <div>mileage: {{ vehicle.mileage }}</div>
+            <div> What they said - {{vehicle.notes}} </div>
+            <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
+          <div>
+          <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
             {% csrf_token %}
             <button>Details</button>
-            </form>
-            
-            </form>
-        <button id="detail--{{ vehicle.id }}">Modal</button> </div>      </li>
+          </form>
+          <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="actual_method" value="DELETE">
+            <button>Delete</button>
+          </form>
+          </div>
+
+       </li>
     {% endfor %}
     </ol>
   </body>

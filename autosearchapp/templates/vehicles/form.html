@@ -15,9 +15,9 @@
        <fieldset>
       <div> {{vehicle.model}} </div>
           <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}">
+          <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}"></input>
       </fieldset>
-      
+
         <button>Add Note</button>
 
         {% if vehicle.id is not None %}

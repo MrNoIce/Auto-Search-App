@@ -8,7 +8,7 @@ from ..connection import Connection
 
 
 
-# @login_required
+@login_required
 def vehicle_form(request):
     if request.method == 'POST':
         vehicle = create_vehicle()
@@ -19,7 +19,7 @@ def vehicle_form(request):
 
         return render(request, template, context)
 
-# @login_required
+@login_required
 def vehicle_edit_form(request, vehicle_id):
 
     if request.method == 'GET':
