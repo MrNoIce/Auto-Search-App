@@ -22,7 +22,7 @@
             {{ vehicle.heading }}
             {{ vehicle.price }}
             <div>mileage: {{ vehicle.mileage }}</div>
-            <div> What they said - {{vehicle.notes}} </div>
+            <div> Notes: {{vehicle.notes}} </div>
             <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
           <div>
           <form action="{% url 'autosearchapp:vehicle_details' vehicle.id %}" method="GET">
