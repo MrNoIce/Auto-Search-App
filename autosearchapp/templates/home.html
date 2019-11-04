@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>Autosearch</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+    {% block css %}
+    {% endblock %}
   </head>
   <body>
-    <h1>Search</h1>
-              <form action="{% url 'autosearchapp:search' %}" method="GET" class="form-group" >
+    <h1>National Auto Search</h1>
+    <form action="{% url 'autosearchapp:search' %}" method="GET" class="form-inline" >
 
       {% csrf_token %}
       <fieldset>
@@ -36,24 +39,18 @@
           <input class="form-control" id="max_price" type="text" name="max_price" placeholder="Max price" value="1000-{{max_price}}">
       </fieldset>
 
-      <input class="btn btn-primary btn-sm" type="submit" value="Search" />
+          <div>  <input class="btn btn-primary " type="submit" value="Search"> </div>
 
             {% csrf_token %}
-        </form>
     </form>
 
 <div class="vehicles">
     {% for vehicle in searched_vehicles.listings %}
         <form action="{% url 'autosearchapp:save_vehicle' %}" method="post" class="form" >
-
-        <dialog class="infoDialog">
-        <div class="infoDialog__message"></div>
-        <button class="closeDialog">Close</button>
-        </dialog>
         <div>
          <form>
             {% if vehicle.media.photo_links|length > 0 %}
-            <img src='{{vehicle.media.photo_links.0}}'height="90rem" width="90rem">
+            <img src='{{vehicle.media.photo_links.0}}'style="width: 18rem;">
             {% endif %}
 
             <input id="heading" type="hidden" name="heading" value="{{ vehicle.heading }}">
@@ -63,9 +60,9 @@
             <input id="vin" type="hidden" name="vin" value="{{ vehicle.media.photo_links.0 }}">
 
             <div> {{ vehicle.heading }}</div>
-            Vin: {{vehicle.vin}} Price: {{vehicle.price}} {{vehicle.dealer.city}} {{vehicle.carfax_1_owner}}
+            <div> ${{vehicle.price}} </div>
+            <div>City: {{vehicle.dealer.city}}</div>
             <div> Mileage - {{vehicle.miles}} </div>
-            <div>Transmission type: {{vehicle.build.transmission}}</div>
             <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
             <div><button class="btn btn-primary" type="submit">Add</button></div>
 

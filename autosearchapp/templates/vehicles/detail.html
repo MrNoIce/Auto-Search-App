@@ -4,43 +4,38 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
-    <title>Vehicle</title>
+    <title>Vehicle Details</title>
+    {% block css %}
+    {% endblock %}
 </head>
-
 <body>
+<div class="card" style="width: 18rem;">
+    <div><img src='{{vehicle.vin}}' class="card-img-top"></div>
+    <div class="card-body">
+        <h2 class="card-title">{{ vehicle.heading }}</h2>
 
-    <section id="vehicle-details">
-        <h1>{{ vehicle.make }}</h1>
-        <h2>{{ vehicle.model }}</h2>
-
-        <div>Year {{ vehicle.year }}</div>
         <div>Mileage: {{ vehicle.mileage }}</div>
-        <div>Color {{ vehicle.color }}</div>
-        <div>Vin Number {{ vehicle.vin }}</div>
-        <div>Zip code {{ vehicle.zip_code }}</div>
-        <div>Listing {{ vehicle.url }}</div>
+        <div>Zip code {{ vehicle.city }}</div>
+        <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
         <div>Price {{ vehicle.price }}</div>
         <div>Notes {{ vehicle.note.vehicle_notes }}</div>
-    </section>
 
-    <section id="vehicle-actions" style="display:flex;">
-        <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="actual_method" value="DELETE">
-            <button>Delete</button>
-        </form>
-        
-
-        <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
-            {% csrf_token %}
-            <button>Edit</button>
-        </form>
-    </section>
-
+            <section id="vehicle-actions" style="display:flex;" class='buttons'>
+                <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="actual_method" value="DELETE">
+                    <button button class="btn btn-primary btn-sm">Delete</button>
+                </form>
+                <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
+                    {% csrf_token %}
+                    <button button class="btn btn-primary btn-sm">Edit</button>
+                </form>
+            </section>
+    </div>
+</div>
 </body>
-
 </html>
 {% endblock %}

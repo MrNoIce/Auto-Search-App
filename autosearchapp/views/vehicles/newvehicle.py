@@ -30,7 +30,7 @@ def new_vehicle(request):
             form_data['price'], user_id,
         ))
 
-    return redirect(reverse('autosearchapp:home'))
+    return redirect(reverse('autosearchapp:vehicles'))
 
 def new_note(request, vehicle_id):
 
