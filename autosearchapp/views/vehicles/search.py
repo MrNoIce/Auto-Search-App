@@ -31,7 +31,7 @@ def search(request):
         }
     response = requests.request("GET", url, headers=headers, params=querystring)
     searched_vehicles = response.json()
-    template = 'vehicles/searchresults.html'
+    template = 'home.html'
     context = {
         'searched_vehicles': searched_vehicles
     }
