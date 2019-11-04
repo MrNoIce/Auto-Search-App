@@ -1,56 +1,56 @@
 {% extends 'shared/nav.html' %}
+{% load bootstrap4 %}
 {% load staticfiles %}
 
 {% block content %}
 <!DOCTYPE html>
 <html>
   <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>Autosearch</title>
   </head>
   <body>
     <h1>Search</h1>
-              <form action="{% url 'autosearchapp:search' %}" method="GET">
+              <form action="{% url 'autosearchapp:search' %}" method="GET" class="form-group" >
 
       {% csrf_token %}
       <fieldset>
           <label for="year"></label>
-          <input id="year" type="text" name="year" placeholder="Year" value="{{year}}">
+          <input class="form-control" id="year" type="text" name="year" placeholder="Year" value="{{year}}">
       </fieldset>
       <fieldset>
           <label for="make"></label>
-          <input id="make" type="text" name="make" placeholder="Make" value="{{make}}">
+          <input class="form-control" id="make" type="text" name="make" placeholder="Make" value="{{make}}">
       </fieldset>
       <fieldset>
           <label for="model"></label>
-          <input id="model" type="text" name="model" placeholder="Model" value="{{model}}">
+          <input class="form-control" id="model" type="text" name="model" placeholder="Model" value="{{model}}">
       </fieldset>
       <fieldset>
           <label for="zip"></label>
-          <input id="zip" type="text" name="zip" placeholder="Zip code" value="{{zip}}">
+          <input class="form-control" id="zip" type="text" name="zip" placeholder="Zip code" value="{{zip}}">
       </fieldset>
       <fieldset>
           <label for="max_price"></label>
-          <input id="max_price" type="text" name="max_price" placeholder="Max price" value="1000-{{max_price}}">
+          <input class="form-control" id="max_price" type="text" name="max_price" placeholder="Max price" value="1000-{{max_price}}">
       </fieldset>
 
-      <input type="submit" value="Search" />
-      {% comment %} <button>Search</button> {% endcomment %}
+      <input class="btn btn-primary btn-sm" type="submit" value="Search" />
 
             {% csrf_token %}
-            {% comment %} <button>Actual Search</button> {% endcomment %}
         </form>
     </form>
 
-<ol class="vehicles">
+<div class="vehicles">
     {% for vehicle in searched_vehicles.listings %}
-        <form action="{% url 'autosearchapp:save_vehicle' %}" method="post">
+        <form action="{% url 'autosearchapp:save_vehicle' %}" method="post" class="form" >
 
         <dialog class="infoDialog">
         <div class="infoDialog__message"></div>
         <button class="closeDialog">Close</button>
         </dialog>
-        <li>
+        <div>
          <form>
             {% if vehicle.media.photo_links|length > 0 %}
             <img src='{{vehicle.media.photo_links.0}}'height="90rem" width="90rem">
@@ -67,19 +67,25 @@
             <div> Mileage - {{vehicle.miles}} </div>
             <div>Transmission type: {{vehicle.build.transmission}}</div>
             <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
-            <div><button type="submit">Add</button></div>
+            <div><button class="btn btn-primary" type="submit">Add</button></div>
+
             {% csrf_token %}
         </form>
-        </li>
+        </div>
     {% endfor %}
-    </ol>
+    </div>
         {% if vehicle.id is not None %}
             <input type="hidden" name="actual_method" value="PUT">
             <input type="submit" value="Update" />
         {% else %}
-            <input type="submit" value="Create" />
+            {% comment %} <input type="submit" value="Create" /> {% endcomment %}
         {% endif %}
 
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
 {% endblock %}
