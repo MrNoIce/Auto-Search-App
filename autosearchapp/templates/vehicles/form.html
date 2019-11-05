@@ -2,33 +2,51 @@
 {% load staticfiles %}
 
 {% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Vehicle Details</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
 
     <h1>Edit Notes</h1>
 
-    {% if vehicle.id is not None %}
-        <form action="{% url 'autosearchapp:new_note' vehicle.id %}" method="post">
-    {% else %}
-        <form action="{% url 'autosearchapp:vehicles' %}" method="post">
-    {% endif %}
-        {% csrf_token %}
+      <div class="card" style="width: 18rem;">
+            {% if vehicle.id is not None %}
+                <form action="{% url 'autosearchapp:new_note' vehicle.id %}" method="post">
+            {% else %}
+                <form action="{% url 'autosearchapp:vehicles' %}" method="post">
+            {% endif %}
+                {% csrf_token %}
 
-       <fieldset>
-      <div> {{vehicle.model}} </div>
-          <label for="note">Notes: </label>
-          <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}"></input>
-      </fieldset>
-
-        <button>Add Note</button>
-
-        {% if vehicle.id is not None %}
-            <input type="hidden" name="actual_method" value="PUT">
-            <input type="submit" value="Update" />
-        {% else %}
-            <input type="submit" value="Create" />
-        {% endif %}
-
+        <div class="card-header">
+            {{vehicle.heading}}
+        </div>
+        <div class="card-body">
+            <fieldset>
+                <label for="note" class="card-title">Notes: </label>
+                <input id="vehicle" type="text" name="vehicle_notes" value="{{ vehicle.note.vehicle_notes }}" class="card-text"></input>
+            </fieldset>
+                <button class="btn btn-primary btn-sm">Add Note</button>
+            {% if vehicle.id is not None %}
+                <input type="hidden" name="actual_method" value="PUT">
+                <input class="btn btn-primary btn-sm" type="submit" value="Update" />
+            {% else %}
+                <input type="submit" value="Create" />
+            {% endif %}
+        </div>
     </form>
+</div>
+</head>
 {% endblock %}
+
+
+
 
 
 

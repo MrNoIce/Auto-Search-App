@@ -20,14 +20,14 @@ def new_vehicle(request):
         db_cursor.execute("""
         INSERT INTO autosearchapp_vehicle
         (
-            heading, mileage, vin, vdp_url, price, user_id
+            heading, mileage, color, vin, vdp_url, price, user_id
         )
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
         """,
         (
             form_data['heading'], form_data['mileage'],
-            form_data['vin'], form_data['vdp_url'],
-            form_data['price'], user_id,
+            form_data['color'], form_data['vin'],
+            form_data['vdp_url'], form_data['price'], user_id,
         ))
 
     return redirect(reverse('autosearchapp:vehicles'))
@@ -107,7 +107,7 @@ def create_vehicle(cursor, row):
     vehicle.id = _row["vehicle_id"]
     vehicle.heading = _row["heading"]
     vehicle.miles = _row["mileage"]
-    vehicle.color = _row["color"]
+    vehicle.dealer.city = _row["color"]
     vehicle.vin = _row["vin"]
     vehicle.zip_code = _row["zip_code"]
     vehicle.vdp_url = _row["vdp_url"]

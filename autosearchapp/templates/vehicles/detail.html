@@ -4,15 +4,17 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta charset="utf-8">
     <title>Vehicle Details</title>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}" />
     {% block css %}
     {% endblock %}
 </head>
 <body>
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 28rem;">
     <div><img src='{{vehicle.vin}}' class="card-img-top"></div>
     <div class="card-body">
         <h2 class="card-title">{{ vehicle.heading }}</h2>
@@ -27,11 +29,11 @@
                 <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="actual_method" value="DELETE">
-                    <button button class="btn btn-primary btn-sm">Delete</button>
+                    <button button class="btn btn-primary">Delete</button>
                 </form>
                 <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
                     {% csrf_token %}
-                    <button button class="btn btn-primary btn-sm">Edit</button>
+                    <button button class="btn btn-primary">Edit</button>
                 </form>
             </section>
     </div>

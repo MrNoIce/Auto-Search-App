@@ -1,5 +1,4 @@
 {% extends 'shared/nav.html' %}
-{% load bootstrap4 %}
 {% load staticfiles %}
 
 {% block content %}
@@ -47,19 +46,20 @@
 <div class="vehicles">
     {% for vehicle in searched_vehicles.listings %}
         <form action="{% url 'autosearchapp:save_vehicle' %}" method="post" class="form" >
-        <div>
+        <div class="card" style="width: 28rem;">
          <form>
             {% if vehicle.media.photo_links|length > 0 %}
-            <img src='{{vehicle.media.photo_links.0}}'style="width: 18rem;">
+            <img src='{{vehicle.media.photo_links.0}}'class="card-img-top">
             {% endif %}
 
             <input id="heading" type="hidden" name="heading" value="{{ vehicle.heading }}">
             <input id="price" type="hidden" name="price" value="{{ vehicle.price }}">
             <input id="mileage" type="hidden" name="mileage" value="{{ vehicle.miles }}">
+            <input id="color" type="hidden" name="color" value="{{ vehicle.dealer.city }}">
             <input id="vdp_url" type="hidden" name="vdp_url" value="{{ vehicle.vdp_url }}">
             <input id="vin" type="hidden" name="vin" value="{{ vehicle.media.photo_links.0 }}">
-
-            <div> {{ vehicle.heading }}</div>
+            <div class="card-body">
+            <div class="card-title"> {{ vehicle.heading }}</div>
             <div> ${{vehicle.price}} </div>
             <div>City: {{vehicle.dealer.city}}</div>
             <div> Mileage - {{vehicle.miles}} </div>
@@ -68,6 +68,7 @@
 
             {% csrf_token %}
         </form>
+        </div>
         </div>
     {% endfor %}
     </div>
