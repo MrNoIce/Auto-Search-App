@@ -30,6 +30,7 @@ def search(request):
         'Content-Type': "application/json"
         }
     response = requests.request("GET", url, headers=headers, params=querystring)
+    print(response, 'response')
     searched_vehicles = response.json()
     template = 'home.html'
     context = {
