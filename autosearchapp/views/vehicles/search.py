@@ -23,7 +23,7 @@ def search(request):
 
     url = "http://api.marketcheck.com/v1/search"
 
-    querystring = {"api_key":API_KEY,"seller_type":"private","year":year,"make":make,"model":model,"zip":zip_code,"radius":"200","car_type":"used","start":"0","rows":"50","price_range":max_price,}
+    querystring = {"api_key":API_KEY,"seller_type":"private","year":year,"make":make,"model":model,"zip":zip_code,"radius":"200","car_type":"used","start":"0","rows":"50","price_range":max_price,"sort_by":"price","photo_links":"true"}
 
     headers = {
         'Host': "marketcheck-prod.apigee.net",
