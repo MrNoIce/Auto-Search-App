@@ -8,7 +8,7 @@ import json
 import os
 
 
-# this handles the request to my external api
+
 
 import requests
 
@@ -30,7 +30,6 @@ def search(request):
         'Content-Type': "application/json"
         }
     response = requests.request("GET", url, headers=headers, params=querystring)
-    print(response, 'response')
     searched_vehicles = response.json()
     template = 'home.html'
     context = {
