@@ -15,7 +15,7 @@
 <body>
 
     <h1>Edit Notes</h1>
-
+                            {% comment %} Form for editing or adding the notes on each saved vehcile. {% endcomment %}
       <div class="card" style="width: 18rem;">
             {% if vehicle.id is not None %}
                 <form action="{% url 'autosearchapp:new_note' vehicle.id %}" method="post">

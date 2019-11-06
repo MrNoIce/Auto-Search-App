@@ -4,6 +4,8 @@ from django.shortcuts import render
 from autosearchapp.models import Vehicle
 from ..connection import Connection
 
+# the views for handling the list template
+
 @login_required
 def vehicle_list(request):
     if request.method == 'GET':

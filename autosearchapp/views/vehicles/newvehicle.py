@@ -7,6 +7,7 @@ from autosearchapp.models import Vehicle
 from autosearchapp.models import model_factory
 from ..connection import Connection
 
+# the view for building, editing, and deleting the new vehicle
 @login_required
 def new_vehicle(request):
 

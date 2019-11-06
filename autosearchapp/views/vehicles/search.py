@@ -8,7 +8,7 @@ import json
 import os
 
 
-
+# this handles the request to my external api
 
 import requests
 

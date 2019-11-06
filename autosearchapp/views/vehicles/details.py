@@ -12,7 +12,7 @@ def get_vehicle(vehicle_id):
     with sqlite3.connect(Connection.db_path) as conn:
         conn.row_factory = create_vehicle
         db_cursor = conn.cursor()
-
+        # gets one specific vehcile in the database
         db_cursor.execute("""
         SELECT
             v.id vehicle_id,
@@ -77,7 +77,7 @@ def vehicle_details(request, vehicle_id):
 
 def create_vehicle(cursor, row):
     _row = sqlite3.Row(cursor, row)
-
+        # Builds vehicle() in order to get values in and out of for the data transfer from django to the db
     vehicle = Vehicle()
     vehicle.id = _row["vehicle_id"]
     vehicle.heading = _row["heading"]

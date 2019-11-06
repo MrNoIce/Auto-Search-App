@@ -7,6 +7,7 @@ from .details import get_vehicle, create_vehicle
 from ..connection import Connection
 
 
+# the views for handling the vehicle form and editing the vehicle form
 
 @login_required
 def vehicle_form(request):

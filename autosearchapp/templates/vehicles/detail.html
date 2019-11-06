@@ -14,15 +14,15 @@
     {% endblock %}
 </head>
 <body>
+                                {% comment %} Displays the details about each car's card {% endcomment %}
 <div class="card" style="width: 28rem;">
     <div><img src='{{vehicle.vin}}' class="card-img-top"></div>
     <div class="card-body">
         <h2 class="card-title">{{ vehicle.heading }}</h2>
-
-        <div>Mileage: {{ vehicle.mileage }}</div>
-        <div>Zip code {{ vehicle.city }}</div>
+        <div>{{ vehicle.mileage }}mi</div>
+        <div>City: {{ vehicle.color }}</div>
         <div><a href='{{vehicle.vdp_url}}'>Seller's site</a></div>
-        <div>Price {{ vehicle.price }}</div>
+        <div>${{ vehicle.price }}</div>
         <div>Notes {{ vehicle.note.vehicle_notes }}</div>
 
             <section id="vehicle-actions" style="display:flex;" class='buttons'>
