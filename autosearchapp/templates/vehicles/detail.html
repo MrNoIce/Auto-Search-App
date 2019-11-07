@@ -26,14 +26,14 @@
         <div>Notes {{ vehicle.note.vehicle_notes }}</div>
 
             <section id="vehicle-actions" style="display:flex;" class='buttons'>
+                <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
+                    {% csrf_token %}
+                    <button button class="btn btn-primary">Edit</button>
+                </form>
                 <form action="{% url 'autosearchapp:vehicle' vehicle.id %}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="actual_method" value="DELETE">
                     <button button class="btn btn-primary">Delete</button>
-                </form>
-                <form action="{% url 'autosearchapp:vehicle_edit_form' vehicle.id %}" method="GET">
-                    {% csrf_token %}
-                    <button button class="btn btn-primary">Edit</button>
                 </form>
             </section>
     </div>
