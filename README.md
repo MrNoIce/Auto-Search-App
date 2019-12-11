@@ -1,4 +1,7 @@
-![Auto-Search-Gif](/autosearchapp/images/autosearch.gif "Auto_Search_gif")
+
+<p align="center">
+  <img src="/autosearchapp/images/autosearch.gif"/>
+</p>
 
 ### Installing
 
