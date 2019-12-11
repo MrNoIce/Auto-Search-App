@@ -1,3 +1,5 @@
+![Auto-Search-Gif](/autosearch/autosearchapp/images/autosearch.gif "Auto_Search_gif")
+
 ### Installing
 
 1. Clone down this repository and cd into it.
@@ -39,6 +41,6 @@ Ctrl+C to quit
 
 10. Go to http://127.0.0.1:8000/ and create an account <br>
 
-11. Search for some vehicles and enjoy! 
+11. Search for some vehicles and enjoy!
 
 
