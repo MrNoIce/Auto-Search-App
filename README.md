@@ -1,4 +1,4 @@
-![Auto-Search-Gif](/autosearch/autosearchapp/images/autosearch.gif "Auto_Search_gif")
+![Auto-Search-Gif](/autosearchapp/images/autosearch.gif "Auto_Search_gif")
 
 ### Installing
 
